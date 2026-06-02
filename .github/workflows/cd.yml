@@ -41,6 +41,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.0"
+
       - id: auth
         uses: google-github-actions/auth@v2
         with:
@@ -49,5 +54,8 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
 
-      - name: Build
+      - name: Build binary
+        run: ./scripts/buildprod.sh
+
+      - name: Build image
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-498214/notely-ar-repo/notely .
