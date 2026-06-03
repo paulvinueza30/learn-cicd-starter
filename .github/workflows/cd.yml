@@ -4,9 +4,9 @@ on:
 jobs:
   deploy:
     name: Deploy
-    runs-on: ub
+    runs-on: ubuntu-latest
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}untu-latest
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     permissions:
       contents: "read"
       id-token: "write"
